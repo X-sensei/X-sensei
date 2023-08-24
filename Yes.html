@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  #no-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+</head>
+<body>
+
+<h2>Do you love me?</h2>
+<button id="yes-button" onclick="showLove()">Yes</button>
+<button id="no-button" onclick="moveNo()">No</button>
+<p id="response"></p>
+
+<script>
+var noButton = document.getElementById("no-button");
+var responseText = document.getElementById("response");
+
+function showLove() {
+  responseText.innerHTML = "I love you too! 😊💖";
+  noButton.style.display = "none";
+}
+
+function moveNo() {
+  var maxWidth = window.innerWidth - noButton.clientWidth;
+  var maxHeight = window.innerHeight - noButton.clientHeight;
+  
+  var newX = Math.floor(Math.random() * maxWidth);
+  var newY = Math.floor(Math.random() * maxHeight);
+  
+  noButton.style.left = newX + "px";
+  noButton.style.top = newY + "px";
+}
+</script>
+
+</body>
+</html>
