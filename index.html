@@ -2,6 +2,29 @@
 <html>
 <head>
 <style>
+  body {
+    background-image: url('https://wallpapercave.com/wp/wp8939959.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+  }
+  
+  #buttons {
+    margin-top: 200px;
+  }
+  
+  button {
+    padding: 15px 30px;
+    font-size: 24px;
+    margin: 0 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
   #no-button {
     position: absolute;
     top: 50%;
@@ -13,8 +36,10 @@
 <body>
 
 <h2>Do you love me?</h2>
-<button id="yes-button" onclick="showLove()">Yes</button>
-<button id="no-button" onclick="moveNo()">No</button>
+<div id="buttons">
+  <button id="yes-button" onclick="showLove()">Yes</button>
+  <button id="no-button" onclick="moveNo()">No</button>
+</div>
 <p id="response"></p>
 
 <script>
