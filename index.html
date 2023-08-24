@@ -21,6 +21,7 @@
   h2 {
     font-size: 100px;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   }
   
   #buttons {
@@ -34,11 +35,12 @@
     border: none;
     cursor: pointer;
     border-radius: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   }
 
   #no-button {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -56,6 +58,7 @@
 <script>
 var noButton = document.getElementById("no-button");
 var responseText = document.getElementById("response");
+var firstNoClick = true;
 
 function showLove() {
   responseText.innerHTML = "I love you too! 😊💖";
@@ -63,14 +66,26 @@ function showLove() {
 }
 
 function moveNo() {
-  var maxWidth = window.innerWidth - noButton.clientWidth;
-  var maxHeight = window.innerHeight - noButton.clientHeight;
-  
-  var newX = Math.floor(Math.random() * maxWidth);
-  var newY = Math.floor(Math.random() * maxHeight);
-  
-  noButton.style.left = newX + "px";
-  noButton.style.top = newY + "px";
+  if (firstNoClick) {
+    var yesButtonPosition = document.getElementById("yes-button").getBoundingClientRect();
+    noButton.style.left = yesButtonPosition.left + "px";
+    noButton.style.top = yesButtonPosition.bottom + 20 + "px";
+    firstNoClick = false;
+  } else {
+    var maxWidth = window.innerWidth - noButton.clientWidth;
+    var maxHeight = window.innerHeight - noButton.clientHeight;
+    
+    var newX = Math.floor(Math.random() * maxWidth);
+    var newY = Math.floor(Math.random() * maxHeight);
+    
+    noButton.style.left = newX + "px";
+    noButton.style.top = newY + "px";
+    
+    // Ensure the "No" button doesn't overlap the text
+    if (noButton.getBoundingClientRect().bottom > responseText.getBoundingClientRect().top) {
+      noButton.style.top = responseText.getBoundingClientRect().top - noButton.clientHeight - 20 + "px";
+    }
+  }
 }
 </script>
 
