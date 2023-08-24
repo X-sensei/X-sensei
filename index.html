@@ -43,8 +43,16 @@
   #no-button {
     position: absolute;
     top: 60%;
-    left: 80%; /* Initial positioning adjusted */
+    left: 50%;
     transform: translate(-50%, -50%);
+  }
+  
+  #response {
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    -webkit-text-stroke: 2px black;
+    -webkit-text-fill-color: white;
+    margin-top: 20px;
   }
 </style>
 </head>
@@ -63,15 +71,15 @@ var responseText = document.getElementById("response");
 var firstNoClick = true;
 
 function showLove() {
-  responseText.innerHTML = "I love you too! 😊💖";
+  responseText.innerHTML = "<span style='font-size: 120px; text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8); -webkit-text-stroke: 3px black; -webkit-text-fill-color: white;'>I love you too! 😍💖</span>";
   noButton.style.display = "none";
 }
 
 function moveNo() {
   if (firstNoClick) {
     var yesButtonPosition = document.getElementById("yes-button").getBoundingClientRect();
-    noButton.style.left = yesButtonPosition.left + 200 + "px"; /* Moved away from Yes button */
-    noButton.style.top = yesButtonPosition.bottom + 20 + "px";
+    noButton.style.left = yesButtonPosition.right + 20 + "px";
+    noButton.style.top = yesButtonPosition.top + "px";
     firstNoClick = false;
   } else {
     var maxWidth = window.innerWidth - noButton.clientWidth;
@@ -86,8 +94,8 @@ function moveNo() {
     
     // Keep "No" button away from "Yes" button
     if (distance < 200) {
-      newX = yesButtonPosition.left + 200;
-      newY = yesButtonPosition.top - 100;
+      newX = yesButtonPosition.right + 20;
+      newY = yesButtonPosition.top;
     }
     
     noButton.style.left = newX + "px";
