@@ -43,7 +43,7 @@
   #no-button {
     position: absolute;
     top: 60%;
-    left: 50%;
+    left: 80%; /* Initial positioning adjusted */
     transform: translate(-50%, -50%);
   }
 </style>
@@ -70,7 +70,7 @@ function showLove() {
 function moveNo() {
   if (firstNoClick) {
     var yesButtonPosition = document.getElementById("yes-button").getBoundingClientRect();
-    noButton.style.left = yesButtonPosition.left + "px";
+    noButton.style.left = yesButtonPosition.left + 200 + "px"; /* Moved away from Yes button */
     noButton.style.top = yesButtonPosition.bottom + 20 + "px";
     firstNoClick = false;
   } else {
