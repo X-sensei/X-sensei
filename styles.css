@@ -1,0 +1,13 @@
+/* styles.css */
+.yellow-black-theme {
+    background: url('https://graph.org/file/d0757e6a93f0c031f9f58.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff; /* Text color */
+}
+
+/* Update link colors for better contrast */
+.yellow-black-theme a {
+    color: #ffcc00; /* Yellow */
+}
+
+/* Add more styles as needed for specific elements */
